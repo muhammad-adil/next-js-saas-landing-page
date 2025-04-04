@@ -13,7 +13,7 @@ export default function Navbar() {
     return (
         <section className="py-4 lg:py-8">
             {/* mx-auto p-4 flex justify-between items-center */}
-            <div className="container">
+            <div className="container max-w-5xl">
                 <div className="grid grid-cols-2 lg:grid-cols-3 border border-white/15 rounded-full px-4 p-2 md:pr-2 items-center">
                     <div>
                         <Image
@@ -22,8 +22,9 @@ export default function Navbar() {
                             className="h-9 md:h-auto w-auto"
                         />
                     </div>
-                    <div className="hidden lg:flex justify-center items-center ">
-                        <nav className="flex gap-4 font-medium items-center hidden md:block">
+                    {/* hidden  */}
+                    <div className="lg:flex justify-center items-center">
+                        <nav className="flex gap-4 font-medium items-center hidden md:inline-flex">
                             {navLinks.map((item) => (
                                 <a
                                     key={item.href}
@@ -52,10 +53,10 @@ export default function Navbar() {
                             <line x1="3" y1="6" x2="21" y2="6"></line>
                             <line x1="3" y1="18" x2="21" y2="18"></line>
                         </svg>
-                        <Button variant="primary" className="">
+                        <Button variant="primary" className="hidden lg:inline-flex items-center md:inline-flex">
                             Log In
                         </Button>
-                        <Button variant="secondary">Sign Up</Button>
+                        <Button variant="secondary" className="hidden lg:inline-flex items-center md:inline-flex">Sign Up</Button>
                     </div>
                 </div>
             </div>
