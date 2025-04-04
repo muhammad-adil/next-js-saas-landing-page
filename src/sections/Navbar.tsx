@@ -1,5 +1,6 @@
 import Image from "next/image";
 import LogoImage from "@/assets/images/logo.svg";
+import Button from "@/components/Button";
 
 const navLinks = [
     { label: "Home", href: "#" },
@@ -10,15 +11,31 @@ const navLinks = [
 
 export default function Navbar() {
     return (
-        <section className="py-4">
+        <section className="py-4 lg:py-8">
             {/* mx-auto p-4 flex justify-between items-center */}
             <div className="container">
-                <div className="grid grid-cols-2 border border-white/15 rounded-full px-4 py-2 items-center">
+                <div className="grid grid-cols-2 lg:grid-cols-3 border border-white/15 rounded-full px-4 p-2 md:pr-2 items-center">
                     <div>
-                        <Image src={LogoImage} alt="Logo" />
+                        <Image
+                            src={LogoImage}
+                            alt="Logo"
+                            className="h-9 md:h-auto w-auto"
+                        />
                     </div>
-                    <div>
-                        {" "}
+                    <div className="hidden lg:flex justify-center items-center ">
+                        <nav className="flex gap-4 font-medium items-center hidden md:block">
+                            {navLinks.map((item) => (
+                                <a
+                                    key={item.href}
+                                    href={item.href}
+                                    className="text-sm font-semibold"
+                                >
+                                    {item.label}
+                                </a>
+                            ))}
+                        </nav>
+                    </div>
+                    <div className="flex justify-end gap-4">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -26,26 +43,19 @@ export default function Navbar() {
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            className="feather feather-menu"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="feather feather-menu md:hidden"
                         >
                             <line x1="3" y1="12" x2="21" y2="12"></line>
                             <line x1="3" y1="6" x2="21" y2="6"></line>
                             <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>{" "}
-                    </div>
-                    <div className="flex gap-4">
-                        {navLinks.map((item) => (
-                            <a
-                                key={item.href}
-                                href={item.href}
-                                className="text-sm font-semibold"
-                            >
-                                {item.label}
-                            </a>
-                        ))}
+                        </svg>
+                        <Button variant="primary" className="">
+                            Log In
+                        </Button>
+                        <Button variant="secondary">Sign Up</Button>
                     </div>
                 </div>
             </div>
